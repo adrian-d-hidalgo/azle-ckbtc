@@ -1,0 +1,15 @@
+# azle
+.azle
+
+# dfx
+.dfx
+
+# node
+node_modules
+
+# bitcoin
+.bitcoin
+
+# VSC
+.vscode/*
+!.vscode/settings.json
