@@ -17,7 +17,6 @@
   "scripts": {
     "postinstall": "npm run btc:install",
     "btc:install": "sh ./scripts/bitcoin/install.sh",
-    "preclean": "turbo run clean",
     "clean": "rm -rf .bitcoin && rm -rf .dfx && rm -rf .azle && rm -rf node_modules",
     "btc:start": ".bitcoin/bin/bitcoind -conf=$(pwd)/bitcoin.conf -datadir=$(pwd)/.bitcoin/data --port=18444",
     "btc:mint": "sh scripts/bitcoin/mint.sh $npm_config_address",
@@ -34,8 +33,6 @@
     "prettier": "^3.3.3"
   },
   "devDependencies": {
-    "jest": "^29.7.0",
-    "ts-jest": "^29.1.4",
     "tsx": "^4.15.7",
     "typescript": "^5.2.2"
   }

@@ -2,67 +2,59 @@
 
 This boilerplate is designed to easily build ExpressJS applications usin ckBTC (a Bitcoin pair) on ICP.
 
-## Features
+## Table of Contents
 
-- Build REST API on chain
-- Work with SQL databases
-- Persist database on chain
-- Make ckBTC transactions
+- [Setup](#setup)
+- [How it Works](#how-it-works)
 
-## Run Locally
+## Setup
 
-Clone the project
+Ensure the following are installed on your system:
 
-```bash
-  git clone https://github.com/adrian-d-hidalgo/azle-ckbtc
-```
+- [DFX](https://internetcomputer.org/docs/current/developer-docs/build/install-upgrade-remove) `0.22.0`
+- [Mops](https://j4mwm-bqaaa-aaaam-qajbq-cai.ic0.app/docs/install)
+- [Node.js](https://nodejs.org/en/) `>= 20`
 
-Go to the project directory
+## How it Works
 
-```bash
-  cd azle-ckbtc
-```
+### Start Project
 
-Install dependencies
+To start the project, open three terminals.
+
+Start the Bitcoin service in the first terminal:
 
 ```bash
-  npm install
-```
-
-```bash
-# only for mac
-codesign -s - .bitcoin/bin/bitcoind
-```
-
-```bash
+codesign -s - .bitcoin/bin/bitcoind # Only for MacOS users
 npm run btc:start
 ```
 
-In another terminal run:
+In another terminal, start the ICP service:
 
 ```bash
 npm run icp:start
 ```
 
-Open another terminal and run:
+In a third terminal, deploy all canisters:
 
 ```bash
 npm run icp:deploy:local
 ```
 
-# How to mint ckBTC
+### Mint ckBTC
 
-Run the following command:
-
-```bash
-# only for mac
-codesign -s - .bitcoin/bin/bitcoin-cli
-```
+Get your deposit address by calling the `getDepositAddress` method.
+Dian
+Mint blocks to receive rewards for the given address:
 
 ```bash
+codesign -s - .bitcoin/bin/bitcoin-cli # Only for MacOS users
 npm run btc:mint --address=$ADDRESS
 ```
 
-After minting, call the method `updateBalance` to update the account balance.
+After minting, update the account balance by calling the `updateBalance` method.
 
-Then, you can verify the account balance in this endpoint: `getBalance`
+You can verify the account balance using the `getBalance` endpoint (balance is shown in Satoshis).
+
+### Transfer ckBTC to Another Principal
+
+Use the `transfer` method, providing the target principal and the amount.
